@@ -41,13 +41,15 @@ jobs:
     needs : [build_job_1 , test_job_2]
     runs-on: ubuntu-latest  
     steps: 
+    
+
+    - name : checkout code  
+      uses : actions/checkout@v4
+
     - name : Download the Dragon file artifact 
       uses : actions/download-artifact@v4
       with : 
         name : dragon-file
-
-    - name : checkout code  
-      uses : actions/checkout@v4
 
     - name : Read File 
       run : cat dragon.txt
