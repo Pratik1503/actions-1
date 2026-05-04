@@ -28,3 +28,6 @@ jobs:
       
        - name : Read a file 
          run : cat README.md
+
+       - name : generate AsCII Artwork
+         run : cowsay -f dragon "Run for a cover , I am a dragon ... RAWR " >> dragon.txt

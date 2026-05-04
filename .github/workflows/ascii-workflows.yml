@@ -1,0 +1,25 @@
+name: My Ascii Workflow 
+
+on: push
+
+jobs:
+   ascii_job:
+       runs-on: ubuntu-latest
+       steps: 
+       - name : Checkout Code
+         uses : actions/checkout@v4
+
+       - name : Install cowsay program  
+         run : sudo apt-get install cowsay -y 
+
+       - name : Execute cowsay command to generate ASCII Artwork  
+         run : cowsay -f dragon "Run for a cover , I am a dragon ... RAWR " >> dragon.txt
+
+       - name : Test the file exist 
+         run : grep -i "dragon" dragon.txt  
+
+       - name : Read File 
+         run : cat dragon.txt
+
+       - name : List repo files 
+         run : ls -ltra 
