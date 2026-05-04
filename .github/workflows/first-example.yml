@@ -17,11 +17,11 @@ jobs:
             echo "Hello World"
             echo "Welcome to Github Actions"
 
-       - name : Run a multi-line script with error
-         run : |
-            echo "Hello World"
-            echo "Welcome to Github Actions"
-            exit 1
+      #  - name : Run a multi-line script with error
+      #    run : |
+      #       echo "Hello World"
+      #       echo "Welcome to Github Actions"
+      #       exit 1
           
        - name : List files 
          run : ls 
