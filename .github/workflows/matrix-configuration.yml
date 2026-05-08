@@ -1,0 +1,29 @@
+name : matrix configuration
+
+on : 
+  push:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    strategy:
+       fail-fast: false 
+       # When set to true, GitHub cancels all in-progress jobs if any matrix job fails. Default: true
+       max-parallel: 2
+       # The maximum number of jobs that can run simultaneously when using a matrix job strategy.
+       matrix:
+          os: [ubuntu-latest, windows-latest]
+          images: [hello-world, alpine]
+          exclude:
+            - os: windows-latest
+              images: alpine  
+          include:
+            - os: ubuntu-latest
+              images: amd64/alpine 
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Docker info
+      run: docker info
+    
+    - name : Run image
+      run: docker run ${{ matrix.images }}
